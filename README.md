@@ -44,6 +44,15 @@ export const Root = () => <div class={classes.root}>Hello world</div>
 
 This was originally written for writing styles in SolidJS. I came from Vue, which already contained a special `<style scoped>` tag, and I wanted something just as easy to use as that. If you are using a framework that does not support writing scoped styles natively, this is for you!
 
+### Why not one of the hundreds of existing CSS-in-JS solutions?
+
+Every single CSS-in-JS solution i've seen suffers from the same problem: it can't integrate with existing tooling.
+This plugin simply generates a CSS module using the contents of the string. This allows it to integrate with PostCSS
+and things like Tailwind or UnoCSS with ease.
+
+In addition, a lot of solutions also have an implicit bundling cost. This differs in that it is completely based on CSS modules. 
+No addition javascript is added when using this plugin.
+
 ### Caveats
 
 - This plugin does NOT support string interpolation. It may seem that way from the use of template strings, but I assure you, all this plugin does is move the contents of the string template **into a real CSS module**, meaning you **cannot** interpolate strings.
