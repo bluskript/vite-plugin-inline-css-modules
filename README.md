@@ -26,9 +26,9 @@ export default {
 ```
 
 ```ts
-import { inlineCss } from 'vite-plugin-inline-css-modules'
+import { css } from 'vite-plugin-inline-css-modules'
 
-const classes = inlineCss`
+const classes = css`
   .root {
     background-color: #1f1;
     @apply rounded-md;
@@ -60,7 +60,7 @@ No addition javascript is added when using this plugin.
   Why? because at compile time, this plugin transforms:
 
   ```ts
-  const classes = inlineCss``
+  const classes = css``
   ```
 
   into:
