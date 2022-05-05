@@ -1,8 +1,10 @@
 import type { Plugin } from 'vite'
 
+type SupportedExtension = 'css' | 'scss' | 'sass' | 'styl' | 'less'
 type PluginConfig = {
   fileMatch?: RegExp
   tagName?: string
+  preprocessor?: SupportedExtension | ((filename: string) => SupportedExtension)
 }
 
 const matchInlineCssModules =
@@ -13,8 +15,9 @@ export const inlineCss = (
 ): Record<string, string> => ({})
 
 export default (config: PluginConfig = {}): Plugin => {
-  const fileMatch = config.fileMatch || /\.(tsx|jsx|js|vue|svelte)$/
-  const tagName = config.tagName || 'inlineCss'
+  const fileMatch = config.fileMatch ?? /\.(tsx|jsx|js|vue|svelte)$/
+  const tagName = config.tagName ?? 'inlineCss'
+  const preprocessor = config.preprocessor ?? 'css'
 
   let cssModules: Record<string, string> = {}
   const virtualModuleId = 'virtual:inline-css-modules'
@@ -51,10 +54,14 @@ export default (config: PluginConfig = {}): Plugin => {
         let baseFilename = id.slice(id.lastIndexOf('/') + 1)
         baseFilename = baseFilename.slice(0, baseFilename.lastIndexOf('.'))
         let cnt = 0
-        let filename = `${baseFilename}-${cnt}.module.css`
+        const ext =
+          typeof preprocessor == 'function'
+            ? preprocessor(baseFilename)
+            : preprocessor
+        let filename = `${baseFilename}-${cnt}.module.${ext}`
         while (cssModules[filename]) {
           cnt++
-          filename = `${baseFilename}-${cnt}.module.css`
+          filename = `${baseFilename}-${cnt}.module.${ext}`
         }
         cssModules[filename] = css
         return `import ${variableName} from "virtual:inline-css-modules/${filename}"\n`
