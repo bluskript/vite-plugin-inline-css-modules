@@ -11,8 +11,6 @@
   - Scopes your CSS locally to your component!
 - Supports ANY framework
 
-&nbsp;
-
 ### Usage
 
 ```
@@ -74,8 +72,8 @@ No addition javascript is added when using this plugin.
 ### Plugin Options
 
 - `tagName`: The CSS template tag name to match for.
-  - Default: `inlineCss`
-  - Set this to `css` this if you want to get syntax highlighting in your IDE (not set to this by default because of potential conflicts with CSS-in-JS frameworks).
+  - Default: `css`
+  - If you are using other CSS-in-JS frameworks, you can use import aliases during destructuring and set the tagName value to the new name to prevent conflicts.
 - `fileMatch`: The regex pattern used to match files to inline.
   - Default: `/\.(tsx|jsx|js|vue|svelte)$/`
 

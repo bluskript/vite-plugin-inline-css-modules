@@ -10,13 +10,13 @@ type PluginConfig = {
 const matchInlineCssModules =
   /(?:const|var|let)\s*(\w+)(?:\s*:.*)?\s*=\s*(\w+)\s*`([\s\S]*?)`/gm
 
-export const inlineCss = (
+export const css = (
   _: TemplateStringsArray
 ): Record<string, string> => ({})
 
 export default (config: PluginConfig = {}): Plugin => {
   const fileMatch = config.fileMatch ?? /\.(tsx|jsx|js|vue|svelte)$/
-  const tagName = config.tagName ?? 'inlineCss'
+  const tagName = config.tagName ?? 'css'
   const preprocessor = config.preprocessor ?? 'css'
 
   let cssModules: Record<string, string> = {}
