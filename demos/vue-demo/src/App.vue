@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
-import { inlineCss } from 'vite-plugin-inline-css-modules';
+import { css } from 'vite-plugin-inline-css-modules';
 
-const classes = inlineCss`
+const classes = css`
 .hello {
   color: green;
 }
