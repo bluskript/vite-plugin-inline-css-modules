@@ -11,4 +11,5 @@ export const tsup: Options = {
   minify: isProd,
   sourcemap: true,
   splitting: false,
+  format: ['cjs', 'esm'],
 }

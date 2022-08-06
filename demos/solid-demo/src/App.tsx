@@ -1,7 +1,6 @@
 import type { Component } from 'solid-js'
-import { inlineCss as css } from 'vite-plugin-inline-css-modules'
+import { css } from 'vite-plugin-inline-css-modules'
 import logo from './logo.svg'
-
 const styles = css`
   .App {
     text-align: center;

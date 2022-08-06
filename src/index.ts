@@ -10,9 +10,7 @@ type PluginConfig = {
 const matchInlineCssModules =
   /(?:const|var|let)\s*(\w+)(?:\s*:.*)?\s*=\s*(\w+)\s*`([\s\S]*?)`/gm
 
-export const css = (
-  _: TemplateStringsArray
-): Record<string, string> => ({})
+export const css = (_: TemplateStringsArray): Record<string, string> => ({})
 
 export default (config: PluginConfig = {}): Plugin => {
   const fileMatch = config.fileMatch ?? /\.(tsx|jsx|js|vue|svelte)$/
@@ -32,11 +30,10 @@ export default (config: PluginConfig = {}): Plugin => {
       return '\0' + id
     },
     load(id) {
-      if (!id.startsWith('\0virtual:inline-css-modules')) return undefined
+      if (!id.startsWith(`\0${virtualModuleId}`)) return undefined
 
       const file = id.slice(`\0${virtualModuleId}`.length + 1)
-      const css = cssModules[file]
-      return css
+      return cssModules[file]
     },
     transform(src, id) {
       if (!fileMatch.test(id)) return undefined

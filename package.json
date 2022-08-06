@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-inline-css-modules",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Write CSS modules without leaving your javascript!",
   "author": "Mia Korennykh",
   "license": "MIT",
@@ -11,7 +11,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js"
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
   },
   "files": [
     "dist"
@@ -30,7 +33,7 @@
     "cross-env": "^7.0.3",
     "prettier": "^2.0.5",
     "tsup": "^5.12.6",
-    "typescript": "^4.0.0",
+    "typescript": "4.8.0-dev.20220806",
     "vite": "latest"
   },
   "prettier": "@alloc/prettier-config",
