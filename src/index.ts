@@ -32,7 +32,9 @@ export default (config: PluginConfig = {}): Plugin => {
     load(id) {
       if (!id.startsWith(`\0${virtualModuleId}`)) return undefined
 
-      const file = id.slice(`\0${virtualModuleId}`.length + 1)
+      const file = id
+        .slice(`\0${virtualModuleId}`.length + 1)
+        .replace(/\?used$/, '')
       return cssModules[file]
     },
     transform(src, id) {
