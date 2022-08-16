@@ -65,7 +65,10 @@ export default (config: PluginConfig = {}): Plugin => {
         cssModules[filename] = css
         return `import ${variableName} from "virtual:inline-css-modules/${filename}"\n`
       })
-      return src
+      return {
+        code: src,
+        map: null,
+      }
     },
   }
 }

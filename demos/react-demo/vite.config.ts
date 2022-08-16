@@ -5,4 +5,7 @@ import pluginInspect from 'vite-plugin-inspect'
 
 export default defineConfig({
   plugins: [inlineCSSModules(), react(), pluginInspect()],
+  build: {
+    sourcemap: true,
+  },
 })
