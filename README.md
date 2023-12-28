@@ -53,9 +53,9 @@ No addition javascript is added when using this plugin.
 
 ### Caveats
 
-- This plugin does NOT support string interpolation. It may seem that way from the use of template strings, but I assure you, all this plugin does is move the contents of the string template **into a real CSS module**, meaning you **cannot** interpolate strings.
+- This plugin does not support string interpolation. It may seem that way from the use of template strings, but all this plugin really does is move the contents of the string template **into a real CSS module**, meaning string interpolation can't work.
 
-- You CANNOT manipulate the classes variables as normal JS variables.
+- You can't manipulate the classes variables as normal JS variables.
 
   Why? because at compile time, this plugin transforms:
 
@@ -79,6 +79,6 @@ No addition javascript is added when using this plugin.
 
 ### Help
 
-- I'm getting an error like `inlineCss is not defined`!
+- I'm getting an error like `inlineCss is not defined`
   - This is probably because you didn't set the tag name correctly in config.
     This plugin might be deleting your import of `inlineCss` from this plugin, so please check to make sure that the `tagName` option is set correctly.
